@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anhduonghitech - Máy Tính & Máy In</title>
+    <!-- Thêm bộ icon FontAwesome để làm các nút gọi điện, zalo -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        /* --- ĐỊNH DẠNG CHUNG --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* --- THANH THÔNG BÁO TRÊN CÙNG (TOP BAR) --- */
+        .top-bar {
+            background-color: #111;
+            padding: 8px 10%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            border-bottom: 1px solid #333;
+        }
+        .top-bar a {
+            color: #f39c12;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- THANH MENU CHÍNH --- */
+        header {
+            background-color: rgba(20, 20, 20, 0.95);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f39c12;
+            text-transform: uppercase;
+        }
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* --- PHẦN BANNER CHÍNH (HERO SECTION) --- */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            /* Thay ảnh nền linh kiện/máy in tại đây nếu muốn */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text h2 {
+            color: #f39c12;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #000;
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-cta:hover {
+            background-color: #e67e22;
+        }
+
+        /* --- KHU VỰC FORM ĐĂNG KÝ PHÂN TAB --- */
+        .form-container {
+            background: #ffffff;
+            color: #333;
+            width: 400px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .tabs {
+            display: flex;
+            background: #2c3e50;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: #222;
+            color: #aaa;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #f39c12;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #1a252f;
+        }
+
+        /* --- NÚT LIÊN HỆ ĐỘNG (FLOATING WIDGET) --- */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .float-btn.phone {
+            background-color: #e74c3c;
+        }
+
+        .float-btn.zalo {
+            background-color: #2980b9;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hiệu ứng rung cho nút gọi điện */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH THÔNG BÁO TRÊN CÙNG -->
+    <div class="top-bar">
+        <div><i class="fa-solid fa-clock"></i> Giờ làm việc: 08:30 - 17:30 (Từ T2 đến T7)</div>
+        <div><i class="fa-solid fa-phone"></i> Hỗ trợ kỹ thuật gấp: <a href="tel:0901974813">Mr Thảo - 0901.974.813</a></div>
+    </div>
+
+    <!-- THANH MENU CHÍNH -->
+    <header>
+        <div class="logo">Craft Copier <span>Solution</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#">Linh Kiện Máy Tính</a></li>
+                <li><a href="#">Nạp Mực Máy In</a></li>
+                <li><a href="#">Sửa Chữa Tận Nơi</a></li>
+                <li><a href="#">Bảng Giá</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PHẦN BANNER CHÍNH (HERO SECTION) -->
+    <section class="hero">
+        <!-- Bên Trái: Tiêu Đề và CTA -->
+        <div class="hero-text">
+            <h2>Giải Pháp Máy Tính & Máy In Toàn Diện</h2>
+            <h1>UY TÍN - CHẤT LƯỢNG KỸ THUẬT TẬN NƠI</h1>
+            <p>Chuyên cung cấp, thay thế linh kiện máy vi tính chính hãng. Đội ngũ kỹ thuật chuyên nghiệp hỗ trợ đổ mực máy in, khắc phục sự cố máy in, máy tính văn phòng nhanh chóng trong vòng 20 phút.</p>
+            <a href="tel:0901974813" class="btn-cta">
+                <i class="fa-solid fa-phone-volume"></i> Gọi Sửa Chữa Ngay: 0901.974.813
+            </a>
+        </div>
+
+        <!-- Bên Phải: Form Đăng Ký Yêu Cầu -->
+        <div class="form-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab(this)">Nạp Mực</button>
+                <button class="tab-btn" onclick="switchTab(this)">Sửa Chữa</button>
+                <button class="tab-btn" onclick="switchTab(this)">Mua Linh Kiện</button>
+            </div>
+            <form class="form-content" onsubmit="event.preventDefault(); alert('Yêu cầu của bạn đã được gửi tới Mr Thảo!');">
+                <div class="form-group">
+                    <input type="text" placeholder="Họ và Tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Số điện thoại liên hệ" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Địa chỉ / Tên Công Ty">
+                </div>
+                <div class="form-group">
+                    <textarea rows="4" placeholder="Nhập chi tiết yêu cầu (Ví dụ: nạp mực máy in Canon LBP2900, máy tính không lên nguồn...)"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Gửi Yêu Cầu Cho Mr. Thảo</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- NÚT CHỨC NĂNG NHẤP NHÁY GÓC MÀN HÌNH -->
+    <div class="floating-contact">
+        <!-- Nút Zalo (Nhấn vào sẽ mở chat Zalo số Mr Thảo) -->
+        <a href="https://zalo.me" target="_blank" class="float-btn zalo" title="Chat Zalo với Mr Thảo">ZALO</a>
+        <!-- Nút Gọi nhanh -->
+        <a href="tel:0901974813" class="float-btn phone" title="Gọi Ngay Cho Mr Thảo">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- SCRIPT ĐỂ CHUYỂN ĐỔI TAB FORM -->
+    <script>
+        function switchTab(button) {
+            // Xóa trạng thái active của tất cả các nút tab
