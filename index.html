@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>anhduonghitech - Máy Tính & Máy In</title>
+    <title>ÁNH DƯƠNG HITECH - Máy Tính & Máy In</title>
     <!-- Thêm bộ icon FontAwesome để làm các nút gọi điện, zalo -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="icon" type="image/png" href="file:///C:/Users/admin/Desktop/1782981414115_2269941264633155128_3260005744758997381_c7e3f2510cf0be2e6149907337122cb3.jpg">
+
     <style>
         /* --- ĐỊNH DẠNG CHUNG --- */
         * {
@@ -255,26 +256,32 @@
 </head>
 <body>
 
-    <!-- THANH THÔNG BÁO TRÊN CÙNG -->
-    <div class="top-bar">
-        <div><i class="fa-solid fa-clock"></i> Giờ làm việc: 08:30 - 17:30 (Từ T2 đến T7)</div>
-        <div><i class="fa-solid fa-phone"></i> Hỗ trợ kỹ thuật gấp: <a href="tel:0901974813">Mr Thảo - 0901.974.813</a></div>
-    </div>
+   <!-- Thanh thông báo nhỏ trên cùng -->
+<div class="top-bar">
+  Giờ làm việc: 08:30 - 17:30 (Từ T2 đến T7)
+</div>
 
-    <!-- THANH MENU CHÍNH -->
-    <header>
-        <div class="logo">Craft Copier <span>Solution</span></div>
-        <nav>
-            <ul>
-                <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Linh Kiện Máy Tính</a></li>
-                <li><a href="#">Nạp Mực Máy In</a></li>
-                <li><a href="#">Sửa Chữa Tận Nơi</a></li>
-                <li><a href="#">Bảng Giá</a></li>
-                <li><a href="#">Liên Hệ</a></li>
-            </ul>
-        </nav>
-    </header>
+<header> 
+  <!-- Khối Logo -->
+  <div class="logo">
+    ANHDUONGHITECH.VN
+    <span>ALL-IN-ONE</span>
+  </div> 
+  
+  <!-- Thanh Menu Điều Hướng (Giữ nguyên menu của bạn) -->
+  <nav> 
+    <ul> 
+      <li><a href="#">Trang Chủ</a></li> 
+      <li><a href="#">Linh Kiện Máy Tính</a></li> 
+      <li><a href="#">Nạp Mực Máy In</a></li> 
+      <li><a href="#">Sửa Chữa Tận Nơi</a></li> 
+      <li><a href="#">Bảng Giá</a></li> 
+      <li><a href="#">Liên Hệ</a></li> 
+    </ul> 
+  </nav> 
+</header>
+
+
 
     <!-- PHẦN BANNER CHÍNH (HERO SECTION) -->
     <section class="hero">
@@ -292,6 +299,7 @@
         <div class="form-container">
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab(this)">Nạp Mực</button>
+					
                 <button class="tab-btn" onclick="switchTab(this)">Sửa Chữa</button>
                 <button class="tab-btn" onclick="switchTab(this)">Mua Linh Kiện</button>
             </div>
@@ -316,7 +324,7 @@
     <!-- NÚT CHỨC NĂNG NHẤP NHÁY GÓC MÀN HÌNH -->
     <div class="floating-contact">
         <!-- Nút Zalo (Nhấn vào sẽ mở chat Zalo số Mr Thảo) -->
-        <a href="https://zalo.me" target="_blank" class="float-btn zalo" title="Chat Zalo với Mr Thảo">ZALO</a>
+        <a href="tel:0901974813" target="_blank" class="float-btn zalo" title="Chat Zalo với Mr Thảo">ZALO</a>
         <!-- Nút Gọi nhanh -->
         <a href="tel:0901974813" class="float-btn phone" title="Gọi Ngay Cho Mr Thảo">
             <i class="fa-solid fa-phone"></i>
